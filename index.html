@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnovVentas – Tecnología que transforma tu mundo</title>
+  <meta name="description" content="InnovVentas, tu tienda líder en productos tecnológicos. Compra laptops, smartphones, accesorios y más con el mejor soporte 24/7." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Innov<strong>Ventas</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#ofertas">Ofertas</a></li>
+        <li><a href="#soporte">Soporte</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-cart" id="cartBtn" aria-label="Carrito de compras">
+          🛒 <span class="cart-badge">3</span>
+        </button>
+        <button class="btn-primary-sm" onclick="openChat()">Chat en vivo</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────── -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-badge">🔥 ¡Oferta del mes — hasta 40% OFF!</div>
+      <h1 class="hero-title">Tecnología que<br /><span class="gradient-text">transforma</span> tu mundo</h1>
+      <p class="hero-subtitle">Encuentra los mejores productos tecnológicos con soporte inmediato 24/7 a través de nuestro asistente inteligente.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Ver productos</button>
+        <button class="btn-ghost" onclick="openChat()">💬 Hablar con IA</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">+12k</span><span class="stat-label">Clientes felices</span></div>
+        <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfacción</span></div>
+        <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Soporte IA</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <div class="floating-card card-1">
+        <span>🎮</span>
+        <div>
+          <p class="fc-title">RTX 4070 Gaming</p>
+          <p class="fc-price">S/ 2,499</p>
+        </div>
+      </div>
+      <div class="floating-card card-2">
+        <span>💻</span>
+        <div>
+          <p class="fc-title">MacBook Pro M3</p>
+          <p class="fc-price">S/ 8,999</p>
+        </div>
+      </div>
+      <div class="floating-card card-3">
+        <span>📱</span>
+        <div>
+          <p class="fc-title">iPhone 15 Pro</p>
+          <p class="fc-price">S/ 5,299</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTOS ─────────────────────────────────────── -->
+  <section class="products-section" id="productos">
+    <div class="section-header">
+      <h2>Productos <span class="gradient-text">destacados</span></h2>
+      <p>Los más vendidos esta semana</p>
+    </div>
+    <div class="products-grid">
+
+      <article class="product-card" id="prod-laptop">
+        <div class="product-badge">NUEVO</div>
+        <div class="product-img"><img src="img/asus.jpg" alt="ASUS VivoBook 15 Pro" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Laptops</p>
+          <h3 class="product-name">ASUS VivoBook 15 Pro</h3>
+          <p class="product-desc">Intel Core i7-1255U · 16GB RAM · 512GB SSD · OLED 15.6"</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(128)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-old">S/ 3,200</span>
+              <span class="price-new">S/ 2,599</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'ASUS VivoBook 15 Pro')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" id="prod-phone">
+        <div class="product-badge hot">HOT</div>
+        <div class="product-img"><img src="img/s24ultra.jpg" alt="Samsung Galaxy S24 Ultra" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Smartphones</p>
+          <h3 class="product-name">Samsung Galaxy S24 Ultra</h3>
+          <p class="product-desc">Snapdragon 8 Gen 3 · 12GB RAM · 256GB · Cámara 200MP</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(312)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-old">S/ 5,800</span>
+              <span class="price-new">S/ 4,899</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'Samsung Galaxy S24 Ultra')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" id="prod-headphones">
+        <div class="product-badge">-30%</div>
+        <div class="product-img"><img src="img/sonyaudicular.jpg" alt="Sony WH-1000XM5" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Audio</p>
+          <h3 class="product-name">Sony WH-1000XM5</h3>
+          <p class="product-desc">ANC líder del mercado · 30h batería · Hi-Res Audio · Bluetooth 5.2</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-old">S/ 1,400</span>
+              <span class="price-new">S/ 979</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'Sony WH-1000XM5')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" id="prod-tablet">
+        <div class="product-img"><img src="img/ipadpro.jpg" alt="iPad Pro 12.9 M2" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Tablets</p>
+          <h3 class="product-name">iPad Pro 12.9" M2</h3>
+          <p class="product-desc">Chip Apple M2 · Pantalla Liquid Retina XDR · 256GB · 5G</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(204)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-new">S/ 6,499</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'iPad Pro 12.9&quot; M2')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" id="prod-monitor">
+        <div class="product-badge">OFERTA</div>
+        <div class="product-img"><img src="img/lgultramonitor.jpg" alt="LG UltraGear 27 4K" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Monitores</p>
+          <h3 class="product-name">LG UltraGear 27" 4K</h3>
+          <p class="product-desc">4K IPS · 144Hz · G-Sync Compatible · HDR600 · USB-C 90W</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(67)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-old">S/ 2,100</span>
+              <span class="price-new">S/ 1,649</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'LG UltraGear 27&quot; 4K')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" id="prod-mouse">
+        <div class="product-img"><img src="img/logitech.jpg" alt="Logitech MX Master 3S" class="prod-img-real" /></div>
+        <div class="product-info">
+          <p class="product-category">Periféricos</p>
+          <h3 class="product-name">Logitech MX Master 3S</h3>
+          <p class="product-desc">8000 DPI · Silencioso · Recarga USB-C · Multi-dispositivo</p>
+          <div class="product-rating">⭐⭐⭐⭐⭐ <span>(156)</span></div>
+          <div class="product-footer">
+            <div class="product-price">
+              <span class="price-old">S/ 600</span>
+              <span class="price-new">S/ 449</span>
+            </div>
+            <button class="btn-add" onclick="addToCart(this, 'Logitech MX Master 3S')">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── MÉTRICAS ──────────────────────────────────────── -->
+  <section class="metrics-section" id="soporte">
+    <div class="metrics-header">
+      <h2>Impacto real del <span class="gradient-text">chatbot IA</span></h2>
+      <p>Métricas en tiempo real desde la implementación</p>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon">💬</div>
+        <div class="metric-value" data-target="4832">0</div>
+        <div class="metric-label">Consultas atendidas</div>
+        <div class="metric-trend up">↑ +23% este mes</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">🛒</div>
+        <div class="metric-value" data-target="67">0</div>
+        <div class="metric-label">% reducción carritos abandonados</div>
+        <div class="metric-trend up">↑ Mejorado con IA</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">⏱️</div>
+        <div class="metric-value" data-target="3" data-suffix="s">0</div>
+        <div class="metric-label">Tiempo respuesta promedio</div>
+        <div class="metric-trend up">↓ Antes: 2 minutos</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">⭐</div>
+        <div class="metric-value" data-target="96" data-suffix="%">0</div>
+        <div class="metric-label">Satisfacción del cliente</div>
+        <div class="metric-trend up">↑ +18% vs. antes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Innov<strong>Ventas</strong></span>
+        <p>Tecnología que transforma tu mundo. Soporte 24/7 con IA.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Empresa</h4><a href="#">Sobre nosotros</a><a href="#">Carreras</a><a href="#">Prensa</a></div>
+        <div class="footer-col"><h4>Soporte</h4><a href="#" onclick="openChat();return false;">Chatbot IA</a><a href="#">Centro de ayuda</a><a href="#">Devoluciones</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Cookies</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 InnovVentas. Trabajo académico – AI-900T00 Microsoft Azure.</p></div>
+  </footer>
+
+  <!-- ─── CHATBOT BUTTON ────────────────────────────────── -->
+  <button class="chat-launcher" id="chatLauncher" onclick="openChat()" aria-label="Abrir chat de soporte">
+    <span class="chat-launcher-icon" id="chatLauncherIcon">💬</span>
+    <span class="chat-launcher-pulse"></span>
+    <div class="chat-launcher-tooltip">¿Necesitas ayuda?</div>
+  </button>
+
+  <!-- ─── CHATBOT WIDGET ────────────────────────────────── -->
+  <div class="chat-widget" id="chatWidget" role="dialog" aria-label="Asistente InnovVentas">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar-wrap">
+          <div class="chat-avatar">🤖</div>
+          <span class="chat-status-dot"></span>
+        </div>
+        <div>
+          <p class="chat-name">Nova · Asistente IA</p>
+          <p class="chat-subtitle">InnovVentas · En línea ahora</p>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-minimize" onclick="closeChat()" aria-label="Cerrar chat">✕</button>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-date-divider">Hoy</div>
+      <!-- messages injected by JS -->
+    </div>
+
+    <div class="chat-quick-replies" id="quickReplies"></div>
+
+    <div class="chat-input-area">
+      <input
+        type="text"
+        id="chatInput"
+        class="chat-input"
+        placeholder="Escribe tu consulta..."
+        autocomplete="off"
+        onkeydown="if(event.key==='Enter') sendMessage()"
+      />
+      <button class="chat-send-btn" id="chatSendBtn" onclick="sendMessage()" aria-label="Enviar mensaje">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <p class="chat-powered">Powered by <strong>Azure AI Language</strong> · InnovVentas 2025</p>
+  </div>
+
+  <!-- ─── MODAL DEL CARRITO ───────────────────────────── -->
+  <div class="cart-modal-overlay" id="cartModalOverlay" onclick="closeCartModal()">
+    <div class="cart-modal" onclick="event.stopPropagation()">
+      <div class="cart-modal-header">
+        <h3>🛒 Tu Carrito</h3>
+        <button class="cart-modal-close" onclick="closeCartModal()">&times;</button>
+      </div>
+      <div class="cart-modal-body" id="cartModalBody">
+        <!-- Los productos del carrito se inyectarán aquí por JavaScript -->
+      </div>
+      <div class="cart-modal-footer">
+        <div class="cart-total-container">
+          <span>Total:</span>
+          <span class="cart-total-value" id="cartTotalValue">S/ 0</span>
+        </div>
+        <div class="cart-modal-actions">
+          <button class="btn-cart-clear" onclick="clearCart()">Vaciar Carrito</button>
+          <button class="btn-cart-checkout" onclick="checkoutCart()">Proceder al Pago</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST NOTIFICATION ───────────────────────────── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>
