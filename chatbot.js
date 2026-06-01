@@ -78,7 +78,8 @@ const PRODUCTS = {
   }
 };
 
-
+// ── NLU Intent Map ──────────────────────────────────────────────
+// Simula Azure AI Language / QnA Maker intent recognition
 const INTENTS = [
   {
     intent: 'greeting',
@@ -530,9 +531,11 @@ function sendQuickReply(label) {
   }
 }
 
-// ── Gemini API Connection ──────────────────────────────────────
+// ── Gemini API Connection (directa desde el navegador, sin PHP) ─
+const GEMINI_API_KEY = 'AQ.Ab8RN6Kmdd0BMiXenQtk-2pulENR74YRZ4opJG9tGm0qaC1liQ';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+
 async function callGeminiAPI(messageText) {
-  // Mostrar indicador de escritura manual mientras se realiza la consulta HTTP
   const msgs = document.getElementById('chatMessages');
   const typingEl = document.createElement('div');
   typingEl.className = 'chat-msg';
@@ -549,36 +552,35 @@ async function callGeminiAPI(messageText) {
   scrollToBottom();
 
   try {
-    const response = await fetch('gemini-api.php', {
+    const response = await fetch(GEMINI_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: messageText })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: `Eres Nova, el asistente virtual de InnovVentas, una tienda de tecnología peruana. 
+Responde en español, de forma amable y concisa (máximo 3 oraciones). 
+Solo responde sobre tecnología, productos electrónicos o consultas de la tienda.
+Consulta del cliente: ${messageText}`
+          }]
+        }]
+      })
     });
-    
-    // Remover el indicador de escritura de Gemini
+
     const oldIndicator = document.getElementById('geminiTypingIndicator');
     if (oldIndicator) oldIndicator.remove();
 
     const data = await response.json();
 
-    if (data.error) {
-      appendBotMessage({
-        text: `⚠️ **Error de Configuración:** ${data.error}\n\nPara solucionar esto, por favor configura tu API Key de Gemini en el archivo \`config.php\`.`
-      }, 0, false);
+    if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+      appendBotMessage({ text: data.candidates[0].content.parts[0].text }, 0, false);
     } else {
-      appendBotMessage({
-        text: data.reply
-      }, 0, false);
+      appendBotMessage({ text: `🤔 No pude procesar esa consulta. ¿Puedes reformularla?`, quickReplies: INITIAL_QUICK_REPLIES }, 0, false);
     }
   } catch (error) {
     const oldIndicator = document.getElementById('geminiTypingIndicator');
     if (oldIndicator) oldIndicator.remove();
-
-    appendBotMessage({
-      text: `❌ **Error de conexión:** No se pudo comunicar con el servidor PHP local. Asegúrate de estar ejecutando XAMPP con Apache activo.`
-    }, 0, false);
+    appendBotMessage({ text: `🤔 No entendí bien tu consulta. Puedo ayudarte con productos, pagos, envíos y garantías.`, quickReplies: INITIAL_QUICK_REPLIES }, 0, false);
   }
 }
 
